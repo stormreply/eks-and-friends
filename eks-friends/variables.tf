@@ -14,20 +14,20 @@ variable "map_accounts" {
 
   default = [
     ########### change to your account id ###########
-    "777777777777"
+    "777777777777",
   ]
 }
 
 ########### add your name or email or nickname ###########
 variable "yourname" {
   description = "Your name without spaces"
-  default = "myname"
+  default = "my_name"
 }
 
 ########### give your cluster a name ###########
 variable "clustername" {
   description = "Your cluster name without spaces"
-  default = "my-k8s"
+  default = "my_cluster"
 }
 
 variable "map_roles" {
@@ -40,11 +40,11 @@ variable "map_roles" {
 
   default = [
     {
-      ########### add the ARN for your role ###########
+      ########## add the ARN for your role ###########
       rolearn  = "arn:aws:iam::66666666666:role/role1"
       username = "role1"
       groups   = ["system:masters"]
-    },
+   },
   ]
 }
 

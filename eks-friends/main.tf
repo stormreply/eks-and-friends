@@ -95,8 +95,8 @@ module "vpc" {
 
 ###### this module will create the EKS cluster ######
 module "eks" {
-  #source       = "terraform-aws-modules/eks/aws"
-  source        = "../eks-terraform"
+  source       = "terraform-aws-modules/eks/aws"
+  #source        = "../eks-terraform"
   cluster_name = var.clustername
   subnets      = module.vpc.private_subnets
   cluster_version      = var.cluster_version
@@ -116,6 +116,8 @@ module "eks" {
       #additional_userdata           = "echo foo bar"
       asg_desired_capacity          = 1
       additional_security_group_ids = [aws_security_group.worker_group_mgmt_one.id]
+      asg_max_size                  = 3
+      autoscaling_enabled           = true
     },
     {
       name                          = "worker-group-2"
@@ -123,6 +125,8 @@ module "eks" {
       #additional_userdata           = "echo foo bar"
       additional_security_group_ids = [aws_security_group.worker_group_mgmt_two.id]
       asg_desired_capacity          = 1
+      asg_max_size                  = 2
+      autoscaling_enabled           = true
     },
   ]
  
