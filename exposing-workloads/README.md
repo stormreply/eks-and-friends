@@ -70,6 +70,12 @@ EOF
 $ kubectl apply -f nginx-svc.yaml
 ```
 
+Please note: alternatively you can expose a workload like this:
+
+```bash
+$ kubectl expose deployment nginx --port 80 --type LoadBalancer
+```
+
 ## Useful tool for debugging:
 
 ```bash
