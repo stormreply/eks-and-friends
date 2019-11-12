@@ -14,20 +14,20 @@ variable "map_accounts" {
 
   default = [
     ########### change to your account id ###########
-    "777777777777",
+    "753769914557",
   ]
 }
 
 ########### add your name or email or nickname ###########
 variable "yourname" {
   description = "Your name without spaces"
-  default = "my_name"
+  default = "max"
 }
 
 ########### give your cluster a name ###########
 variable "clustername" {
   description = "Your cluster name without spaces"
-  default = "my_cluster"
+  default = "max_k8s"
 }
 
 variable "map_roles" {
@@ -41,8 +41,8 @@ variable "map_roles" {
   default = [
     {
       ########## add the ARN for your role ###########
-      rolearn  = "arn:aws:iam::66666666666:role/role1"
-      username = "role1"
+      rolearn  = "arn:aws:iam::753769914557:role/team.bu1.mkoerbaecher"
+      username = "team.bu1.mkoerbaecher"
       groups   = ["system:masters"]
    },
   ]
@@ -59,8 +59,14 @@ variable "map_users" {
   default = [
     {
       ########### add the ARN for additional user who should have access to your cluster ###########
-      userarn  = "arn:aws:iam::66666666666:user/user1"
-      username = "user1"
+      userarn  = "arn:aws:iam::753769914557:user/max"
+      username = "max"
+      groups   = ["system:masters"]
+    },
+    {
+      ########### add the ARN for additional user who should have access to your cluster ###########
+      userarn  = "arn:aws:iam::753769914557:user/christoph"
+      username = "christoph"
       groups   = ["system:masters"]
     },
   ]
