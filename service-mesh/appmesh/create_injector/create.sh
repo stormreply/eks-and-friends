@@ -1,11 +1,11 @@
 
 
-kubectl apply -f create_injector/appmesh-ns.yaml
-./create_injector/gen-cert.sh
+kubectl apply -f appmesh-ns.yaml
+./gen-cert.sh
 echo
-./create_injector/ca-bundle.sh
+./ca-bundle.sh
 echo
-kubectl apply -f create_injector/inject.yaml
+kubectl apply -f inject.yaml
 echo
 echo Waiting for pods to come up...
 sleep 15

@@ -9,5 +9,5 @@ spec:
       - name: awscli
         image: 672518094988.dkr.ecr.us-west-2.amazonaws.com/awscli:v9
         imagePullPolicy: Always
-        command: ["aws","appmesh","list-meshes","--region","us-west-2"]
+        command: ["aws","appmesh","list-meshes","--region","eu-central-1"]
       restartPolicy: Never

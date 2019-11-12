@@ -4,9 +4,9 @@ go to ./sample-app/ and follow the instructions then come back here
 
 ## App Mesh
 ### Injector
-The first component required is the injector controller, to keep it simple just run
+The first component required is the injector controller, to keep it simple just go into the folder /appmesh/create_injector/ and run
 ```
-./appmesh/create_injector/create.sh
+sh create.sh
 kubectl get pods -nappmesh-inject
 ```
 Then we need to label the Prod Namespace `kubectl label namespace prod appmesh.k8s.aws/sidecarInjectorWebhook=enabled
