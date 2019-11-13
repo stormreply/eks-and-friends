@@ -1,0 +1,50 @@
+--- 
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eksctl
+  region: eu-central-1
+  version: "1.13"
+
+vpc:
+  cidr: 10.10.0.0/16
+  autoAllocateIPv6: true
+
+nodeGroups:
+  - name: public
+    tags:
+      k8s.io/cluster-autoscaler/enabled: "true"
+      k8s.io/cluster-autoscaler/eksctl-template: "owned"
+    instanceType: t3.medium
+    desiredCapacity: 1
+    minSize: 1
+    maxSize: 3
+    volumeSize: 30
+    volumeType: gp2
+    ssh: # use existing EC2 key
+      publicKeyName: eks
+    labels:
+      nodegroup-type: frontend-workloads
+    iam:
+      withAddonPolicies:
+        albIngress: true
+        autoScaler: true
+        cloudWatch: true
+
+  - name: private
+    instanceType: t3.medium
+    desiredCapacity: 1
+    labels:
+      nodegroup-type: backend-cluster-addons
+    privateNetworking: true
+    preBootstrapCommands:
+      # allow docker registries to be deployed as cluster service 
+      - 'echo {\"insecure-registries\": [\"172.20.0.0/16\",\"10.100.0.0/16\"]} > /etc/docker/daemon.json'
+      - "systemctl restart docker"
+
+cloudWatch:
+  clusterLogging:
+    # enable specific types of cluster control plane logs
+    enableTypes: ["audit", "authenticator", "controllerManager"]
+    # all supported types: "api", "audit", "authenticator", "controllerManager", "scheduler"
