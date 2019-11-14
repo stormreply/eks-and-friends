@@ -3,4 +3,7 @@ Here you can find the source code for our LabCamp "AWS EKS and Friends", which b
 
 ## Outline
 1. AWS EKS Terraform Template -> eks-friends
-2. AWS AppMesh installation and demo -> service-mesh
+2. Exposing Workload
+3. Autoscaling
+4. AWS AppMesh installation and demo -> service-mesh
+5. Container Insights
